@@ -1,5 +1,7 @@
 package importers;
 
+import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
+
 public class Drawing {
 	
 	public int id = -1;
@@ -43,6 +45,25 @@ public class Drawing {
 	}
 	public int countLines(){
 		return lines.length;
+	}
+	
+	public int[] getLineData(int lineNumber){
+		int[] out = new int[6];
+		
+		String[] lineData = lines[lineNumber].split("-");
+		
+		String[] tmpPoint = lineData[0].split("*");
+		out[0] = Integer.parseInt(tmpPoint[0]);
+		out[1] = Integer.parseInt(tmpPoint[1]);
+		
+		tmpPoint = lineData[1].split("*");
+		out[2] = Integer.parseInt(tmpPoint[0]);
+		out[3] = Integer.parseInt(tmpPoint[1]);
+		
+		out[4] = Integer.parseInt(lineData[2]);
+		out[5] = Integer.parseInt(lineData[3]);
+		
+		return out;
 	}
 	
 	public int getColor(int lineNumber){
