@@ -1,7 +1,5 @@
 package importers;
 
-import com.sun.corba.se.impl.resolver.SplitLocalResolverImpl;
-
 public class Drawing {
 	
 	public int id = -1;
@@ -98,6 +96,9 @@ public class Drawing {
 		for (int i = 0; i < colorWeights.length; i++) {
 			colorWeights[i] = (float)(colorWeights[i]/Math.sqrt(length));
 		}
+		//Most drawing are drawn using black. Excluded to find more interesting results.
+		colorWeights[6] = 0;
+		
 		return colorWeights;
 	}
 }

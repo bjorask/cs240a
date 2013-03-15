@@ -37,7 +37,7 @@ public class MapInvert extends Mapper<LongWritable, Text, IntWritable, WeightWri
 				id.set(drawingF.id);
 				
 				for (int i = 0; i < drawingF.getColorWeights().length; i++) {
-					//System.out.println("drawID:" + drawingF.id+",weight["+i+"]:" + weights[i]);
+
 					if (weights[i] > 0){
 						colorid.set(i);
 						context.write(colorid, new WeightWritable(drawingF.id, weights[i]));					

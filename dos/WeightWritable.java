@@ -14,6 +14,7 @@ public class WeightWritable implements Writable {
 		out.writeInt(id);
 		out.writeFloat(value);
 	}
+	
 	public void readFields(DataInput in) throws IOException{
 		id = in.readInt();
 		value = in.readFloat();
@@ -23,6 +24,7 @@ public class WeightWritable implements Writable {
 		this.id = id;
 		this.value = value;
 	}
+	
 	public WeightWritable(){
 		
 	}

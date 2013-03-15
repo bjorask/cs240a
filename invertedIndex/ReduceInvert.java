@@ -15,14 +15,9 @@ public class ReduceInvert extends Reducer<IntWritable, WeightWritable, IntWritab
 	public void reduce(IntWritable key, Iterable<WeightWritable> values, Context context) throws IOException, InterruptedException {
 		ArrayList<WeightWritable> weights = new ArrayList<WeightWritable>();
 		
-		for (WeightWritable weight : values) {
-			
-			System.out.println("ID: "+ key.get()+"," + weight.id +","+ weight.value);
-			
+		for (WeightWritable weight : values) {			
 			weights.add(new WeightWritable(weight));
 		}
-
-		System.out.println(weights.size() + "<- weightslength before reducefinish!");
 
 		WeightArrayWritable output = new WeightArrayWritable(); 
 		output.set(weights.toArray(new WeightWritable[weights.size()]));
