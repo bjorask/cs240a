@@ -29,8 +29,14 @@ public class SimilaritySort {
 		job.setMapperClass(MapSort.class);
 		job.setReducerClass(ReduceSort.class);
 
-		job.setInputFormatClass(TextInputFormat.class);
-		job.setOutputFormatClass(SequenceFileOutputFormat.class);
+		job.setMapOutputKeyClass(FloatWritable.class);
+		job.setMapOutputValueClass(Text.class);
+		
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(FloatWritable.class);
+		
+		job.setInputFormatClass(SequenceFileInputFormat.class);
+		job.setOutputFormatClass(TextOutputFormat.class);
 
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));

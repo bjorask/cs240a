@@ -27,8 +27,11 @@ public class Similarity {
 		Job job = new Job(conf, "Similarity");
 		job.setJarByClass(Similarity.class);
 
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(FloatWritable.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(FloatWritable.class);
+		
+		job.setOutputKeyClass(FloatWritable.class);
+		job.setOutputValueClass(Text.class);
 
 		job.setMapperClass(MapSimilarity.class);
 		job.setReducerClass(ReduceSimilarity.class);

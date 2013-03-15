@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 import dos.*;
 
-public class ReduceSimilarity extends Reducer<Text, FloatWritable, Text, FloatWritable> {
+public class ReduceSimilarity extends Reducer<Text, FloatWritable, FloatWritable, Text> {
 
 //	@Override
 	public void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
@@ -19,6 +19,6 @@ public class ReduceSimilarity extends Reducer<Text, FloatWritable, Text, FloatWr
 			sum += val.get();
 		}
 		
-		context.write(key, new FloatWritable(sum));
+		context.write(new FloatWritable(sum), key);
 	}
 }
