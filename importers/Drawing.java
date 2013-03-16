@@ -68,6 +68,22 @@ public class Drawing {
 		String[] lineData = lines[lineNumber].split("-");
 		return (lineData.length == 4) ? Integer.parseInt(lineData[3]) : -1;
 	}
+	public float getQuality(){
+		float[] weights =  getColorWeights();
+		float colorQ = 0;
+		for (int i = 0; i < weights.length; i++) {
+			if(weights[i] != 0){
+				colorQ += 1;
+			}
+		}
+		colorQ = colorQ / weights.length;
+		
+		float lineQ = (countLines() > 100) ? 0.1f : 0.0f;
+		lineQ += countLines() / 100;
+		
+		return colorQ * 2f + lineQ * 0.1f;
+		
+	}
 	
 	public float[] getColorWeights(){
 		float[] colorWeights = new float[10];

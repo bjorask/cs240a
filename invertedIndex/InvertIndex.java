@@ -35,7 +35,7 @@ public class InvertIndex {
 
 		job.setMapperClass(MapInvert.class);
 		job.setReducerClass(ReduceInvert.class);
-
+		
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 

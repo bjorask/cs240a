@@ -21,7 +21,7 @@ public class MapSimilarity extends Mapper<IntWritable, WeightArrayWritable, Text
 	
 	@Override
 	public void map(IntWritable key, WeightArrayWritable value, Context context) throws IOException, InterruptedException {
-				
+
 		Writable[] vector = value.get();
 
 		for (int i = 0; i < vector.length; i++){
